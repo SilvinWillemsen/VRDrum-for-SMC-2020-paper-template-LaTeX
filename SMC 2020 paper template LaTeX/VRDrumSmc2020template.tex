@@ -233,17 +233,24 @@ Possibly the most important reason for our decision, is that we need to obtain t
 \label{fig:userOverview}
 \end{figure}
 
-\section{System Overview} \label{sec:sys}
-
-\autoref{fig:userOverview} shows the overall design of DigiDrum and its setup. A Leap Motion tracking sensor is mounted to the front of an Oculus Rift HMD so that hands are always in the ``field of view'' when one looks at the virtual drum. The drum is fixed in-place and played like a djembe. In the application, the virtual drum was placed slightly higher than the physical drum to make sure the physical model was triggered when the physical drum was hit.
-
-A detailed overview of the system is given in \autoref{fig:systemLayout}. The hand movement data is retrieved by a PC which runs the cross-platform game engine Unity \cite{unity}. The Unity scene contains the virtual environment (see Section \ref{sec:unity}) that the user will see through the HMD and the physical model used for the sound and haptics (see Section \ref{sec:PM}). The HMD also sends data back to the PC regarding location and head rotation. Once the tracked hand touches (or collides with) the virtual drum, the physical model is triggered and its output sound is sent to a haptuator which is attached to the inside of the drum membrane using thin double-sided tape. This causes the physical membrane to be actuated by a virtual membrane. The same sound is sent to sound-isolating headphones so that the sound coming from the physical drum does not interfere with the audio coming from the simulated drum.
-\begin{figure}[h]
+\begin{figure}[t]
+\includegraphics[width=1.0\columnwidth]{SMC 2020 paper template LaTeX/Images/user.jpg}
+\caption{A user interacting with the setup.}
+\centering
+\label{fig:user}
+\end{figure}
+\begin{figure}[t]
 \includegraphics[width=1.0\columnwidth]{Images/systemlayout-updated.png}
 \caption{Detailed system layout. The user interacts with the system using their hands and gets haptic feedback from the haptuator attached to the drum membrane, auditory feedback from closed headphones and visual feedback from the Oculus Rift headset. A detailed explanation can be found in Section \ref{sec:sys}.}
 \centering
 \label{fig:systemLayout}
 \end{figure}
+\section{System Overview} \label{sec:sys}
+
+\autoref{fig:userOverview} shows the overall design of DigiDrum and its setup and \autoref{fig:user} shows a user interacting with the setup. A Leap Motion tracking sensor is mounted to the front of an Oculus Rift HMD so that hands are always in the ``field of view'' when one looks at the virtual drum. The drum is fixed in-place and played like a djembe. In the application, the virtual drum was placed slightly higher than the physical drum to make sure the physical model was triggered when the physical drum was hit.
+
+A detailed overview of the system is given in \autoref{fig:systemLayout}. The hand movement data is retrieved by a PC which runs the cross-platform game engine Unity \cite{unity}. The Unity scene contains the virtual environment (see Section \ref{sec:unity}) that the user will see through the HMD and the physical model used for the sound and haptics (see Section \ref{sec:PM}). The HMD also sends data back to the PC regarding location and head rotation. Once the tracked hand touches (or collides with) the virtual drum, the physical model is triggered and its output sound is sent to a haptuator which is attached to the inside of the drum membrane using thin double-sided tape. This causes the physical membrane to be actuated by a virtual membrane. The same sound is sent to sound-isolating headphones so that the sound coming from the physical drum does not interfere with the audio coming from the simulated drum.
+
 \section{Unity Implementation}\label{sec:unity}
 As mentioned before, the virtual environment is  created using Unity. All the hardware drivers and software components are linked together using this platform. Here, we created a virtual drum playable with hand motion using Leap Motion. The user enters the VR environment (rendered as a recording studio) and Leap Motion reconstructs (in VR) the subject's own hands. In the virtual recording studio we placed a drum at the center. The virtual drum is programmed to detect collision with the reconstructed hands. When a collision was detected, a C\# script, in which a physical model of a drum membrane is programmed, gets activated to reproduce the beating sound of the drum through an actuator placed inside the drum skin.
 
